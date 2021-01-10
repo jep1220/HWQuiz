@@ -38,19 +38,20 @@ function getQuestion() {
 
     choicesEl.innerHTML = "";
 
-    currentQuestion.choices.forEach(funciton(choice, i) {
-        var choiceNode = document.createElement("button");
-        choiceNode.setAttribute("class", "choice");
-        choiceNode.setAttribute("value", choice);
 
-        choiceNode.textContent = i + 1 +". " + choice; 
+currentQuestion.choices.forEach(function(choice, i) {
+    
+    var choiceNode = document.createElement("button");
+    choiceNode.setAttribute("class", "choice");
+    choiceNode.setAttribute("value", choice);
 
-        choiceNode.onClick = questionClick;
+    choiceNode.textContent = i + 1 + ". " + choice;
 
-        choicesEl.appendchild(choiceNode);
-    })
+    choiceNode.onclick = questionClick;
+
+    choicesEl.appendChild(choiceNode);
+  });
 }
-
 
 function questionClick() {
     
@@ -93,3 +94,19 @@ function questionClick() {
     }
   }
   
+
+  function quizEnd() {
+    // stop timer
+    clearInterval(timerId);
+  
+    // show end screen
+    var endScreenEl = document.getElementById("end-screen");
+    endScreenEl.removeAttribute("class");
+  
+    // show final score
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+  
+    // hide questions section
+    questionsEl.setAttribute("class", "hide");
+  }
