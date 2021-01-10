@@ -21,5 +21,11 @@ function startQuiz() {
     startScreenEl.setAttribute("class", "hide");
 
     questionsEl.removeAttribute("class");
+
+    timerID = setInterval(clockTick, 100);
+
+    timerEl.textContent = time;
+
+    getQuestion();
     
 }
